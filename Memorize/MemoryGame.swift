@@ -15,6 +15,14 @@ struct MemoryGame<CardContent>{ //if you want to use generics then you must put 
         print("card chosen: \(card)")
     }//end of choose func
     
+    init(numberOfPairsOfCards: Int, cardContentFactory: (Int) -> CardContent){
+        cards = Array<Card>()
+        for pairIndex in 0..<numberOfPairsOfCards{
+            let content = cardContentFactory(pairIndex)
+            cards.append(Card(isFaceUp: false, ismatched: false, content: content))
+            cards.append(Card(isFaceUp: false, ismatched: false, content: content))
+        }
+    }
     struct Card {
         var isFaceUp: Bool
         var ismatched: Bool
